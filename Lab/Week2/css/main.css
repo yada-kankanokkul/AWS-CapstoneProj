@@ -1,0 +1,143 @@
+
+
+h1 {
+    color: blue; /* Sets the text color */
+    font-size: 32px; /* Sets the text size */
+}
+
+h2 {
+    background-color: darkblue;  /* Sets the background color */
+    color: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: Copperplate;    
+}
+
+
+/* modify by Class */
+.nav-menu {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.nav-menu a {
+    float: left;
+    display: block;
+    color: white;
+    background-color: grey;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 25%;
+    text-decoration: none; 
+}
+.nav-menu a:hover {
+    background-color: darkblue;
+}
+
+.products {
+    float: left;
+    width: 75%;
+}
+.products img {
+    width: 130px;
+}
+.products table {
+    width: 100%;
+    padding: 5px;
+    table-layout: fixed;
+}
+.products p {
+    font-family: Copperplate;
+}
+.products td {
+    border: 1px solid;
+}
+.products tr {
+    vertical-align: bottom;
+    text-align: center;
+ }
+
+
+.services-image {
+    float: left;
+    width: 40%;
+    overflow: hidden;
+    margin-left: 5px;
+    /*height: 100px;  */
+}
+.services-text  {
+    float: left;
+    width: 45%;
+    padding-left: 20px;
+}
+.sidebar {
+    float: left;
+    width: 25%;
+}
+.sidebar p[id="italicize"] {
+    font-style: italic;
+  }
+
+.location {
+    float: left;
+    width: 100%;
+}
+.about-us {
+    float: left;
+    width: 100%;
+}
+.location p, .about-us p {
+    padding: 20px;
+    background: lightgrey;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.location img, a {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.about-us img {
+    margin-left: 5px;
+    margin-right: 5px;
+    max-width: 96%;
+}
+
+.services {
+    float: left;
+    width: 100%;
+}
+.cert{
+    float: left;
+    width: 10%;
+}
+.cert img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50%;
+}
+
+.footer{
+    float: left;
+    width: 100%;
+    background-color: black;  /* Sets the background color */
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* modify by ID */
+#header{
+    background-color: black;  /* Sets the background color */
+    color: white;                 /* Sets the text color */
+    font-size: 250%;              /* Sets the font size */
+}
+
+
