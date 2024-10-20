@@ -1,0 +1,68 @@
+Basic Structure Tags
+<html>: Defines the root of the HTML document.
+<head>: Contains metadata, links to CSS, JavaScript, etc.
+<title>: Sets the title of the webpage (appears in the browser tab).
+<body>: Contains the visible content of the webpage.
+
+
+Text Formatting Tags
+<h1> to <h6>: Headings (h1 is the largest, h6 is the smallest).
+<p>: Paragraph of text.
+<b> or <strong>: Bold text.
+<i> or <em>: Italic text.
+<u>: Underlined text.
+<br>: Line break.
+<hr>: Horizontal line.
+<small>: Smaller text.
+
+
+Link and Media Tags
+<a href="url">: Hyperlink (creates a clickable link).
+<img src="url" alt="description">: Displays an image.
+<video>: Embeds a video.
+<audio>: Embeds audio content.
+<iframe>: Embeds another webpage or media.
+
+
+List Tags
+<ul>: Unordered (bulleted) list.
+<ol>: Ordered (numbered) list.
+<li>: List item (used inside <ul> or <ol>).
+
+
+Table Tags
+<table>: Creates a table.
+<tr>: Table row.
+<td>: Table data (cell content).
+<th>: Table header cell.
+
+
+Form Tags
+<form>: Creates an HTML form for user input.
+<input>: Defines an input field.
+type can be text, password, email, submit, etc.
+<textarea>: Multiline text input.
+<button>: Clickable button.
+<select>: Dropdown list.
+<option>: Option inside the dropdown list.
+
+
+Semantic Tags
+<header>: Defines the header of a webpage or section.
+<footer>: Defines the footer of a webpage or section.
+<nav>: Navigation links section.
+<section>: Defines a section in a document.
+<article>: Defines independent, self-contained content.
+<aside>: Defines content aside from the main content.
+<main>: Main content of the document.
+
+
+Container Tags
+<div>: Division or section of the webpage (block-level).
+<span>: Inline container, often used for styling.
+
+
+Script and Style Tags
+<script>: Embeds JavaScript.
+<link>: Links to external stylesheets or resources.
+<style>: Embeds CSS styles directly in the document.
