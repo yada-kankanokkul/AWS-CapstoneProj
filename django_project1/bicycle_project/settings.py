@@ -77,7 +77,8 @@ WSGI_APPLICATION = 'bicycle_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'bicycles.db',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

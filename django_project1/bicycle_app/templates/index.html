@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <body>
+   <h1>Hello from bicycle_app</h1>
+   <ul>
+        {% for product in product_item %}
+        <li>{{ product.product_name }} ${{ product.price }}</li>
+        {% endfor %}
+   </ul>
+ </body>
+</html>
