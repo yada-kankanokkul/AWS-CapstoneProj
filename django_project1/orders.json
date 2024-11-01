@@ -1,0 +1,8 @@
+[
+    {
+        "model": "bicycle_app.Order",
+        "fields": {
+            "amount": "88.00"
+        }
+    }
+]

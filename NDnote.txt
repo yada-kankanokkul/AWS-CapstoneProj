@@ -1,0 +1,17 @@
+python manage.py runserver 0.0.0.0:8080
+
+http://localhost:8080/
+http://127.0.0.1:8080/
+
+
+sqlite3 db.sqlite3
+sqlite3 bicycles.db
+.tables
+.exit
+
+python manage.py shell
+
+
+
+
+pip install pymysql pillow cryptography

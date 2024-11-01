@@ -1,0 +1,21 @@
+[
+    {
+        "model": "bicycle_app.Order_Item",
+        "fields": {
+            "order_number": "1",
+            "product_id": "3",
+            "quantity": "2",
+            "amount": "35.00"
+        }
+    },
+    {
+        "model": "bicycle_app.Order_Item",
+        "fields": {
+            "order_number": "1",
+            "product_id": "4",
+            "quantity": "1",
+            "amount": "18.00"
+        }
+    }
+]
+
