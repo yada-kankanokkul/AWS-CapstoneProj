@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="products" id="products-link">
+    <h2>Products</h2>
+    <form action="order_result" method="POST" id="order_form"></a>
+        {% csrf_token %}
+       
+        <table>
+            <tr>
+                {% for i in product_items %}
+                    {% if forloop.counter0|divisibleby:3 %}
+                        </tr>
+                        <tr>
+                    {% endif %}
+                    <td>
+                        <img src="static/images/{{ i.image_url.url }}" width="100" />
+                        <p>{{ i.product_name }} ${{ i.price }}<br>
+                            <input type="hidden" name="product_name" value="{{ i.product_name }}">
+                            <input type="hidden" name="product_id" value="{{ i.id }}">
+                            <input type="hidden" name="amount" value="{{ i.price }}">
+                            <label>Quantity: </label>
+                            <input type="number" name="quantity" value="0" min="0" max="4">
+                        </p>
+                    </td>
+                {% endfor %}
+                
+            </tr>
+        </table>
+        
+        <div class="submitform">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+{% endblock content %}

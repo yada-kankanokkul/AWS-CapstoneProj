@@ -1,11 +1,152 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-  <body>
-   <h1>Hello from bicycle_app</h1>
-   <ul>
-        {% for product in product_item %}
-        <li>{{ product.product_name }} ${{ product.price }}</li>
-        {% endfor %}
-   </ul>
- </body>
+
+<head>
+    <title>AnyCompany bicycle parts</title>
+    <link rel="icon" href="{% static 'images/logo-black.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    <div class="banner">
+        <table>
+            <tr>
+                <td><img src="{% static 'images/logo-black.png' %}"></td>
+                <td>AnyCompany bicycle parts</td>
+            </tr>
+        </table>
+    </div>
+    <div class="nav-menu">
+      <a href="{% url 'index' %}">Products</a>
+      <a href="{% url 'all_orders' %}">Order history</a>
+      <a href="#services-link">Services</a>
+      <a href="#location-link">Location</a>
+      <a href="#about-us-link">About us</a>
+    </div>
+
+    <!-- product list goes here -->
+    {% block content %}
+    {% endblock content %}
+
+
+    <div class="sidebar">
+        <div class="location" id="location-link">
+            <h2>Store location</h2>
+            <p>
+                <b>Address:</b>
+                <br>100 Anywhere Street, Anytown, USA
+                <br><br>
+
+                <b>Phone:</b>
+                <br>555-1212
+                <br><br>
+
+                <b>Hours:</b>
+                <br>Mon-Fri 7 a.m.-7 p.m.
+                <br>Sat 8 a.m.-6 p.m.
+                <br>Sun Closed
+            </p>
+            <img src="{% static 'images/map.jpeg' %} width="130px">
+            <br>
+            <a href="https://www.openstreetmap.org/search?query=nyc" target="_blank">Get directions</a>
+        </div>
+
+        <div class="about-us" id="about-us-link">
+            <h2>About us</h2>
+            <p id="italicize">AnyCompany was founded by a group of friends who share a passion for bicycling, and they
+                all agree that it is always a great day to bike!</p>
+            <img src="https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/SPL-PW-300-DVF301-DEV/images/biking-outdoors.jpeg">
+            <div class="theme">
+                <button type="button" id="light_button">Light banner</button>
+                <button type="button" id="dark_button">Dark banner</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="services" id="services-link">
+        <h2>Services</h2>
+        <div class="services-image">
+            <img src="{% static 'images/repair.jpeg' %}" height="350">
+        </div>
+        <div class="services-text">
+
+            <p>Do you need help installing your bicycle replacement parts, or does your bike need adjustment? We can
+                help with that. Call one of our store locations to schedule an appointment and get a service quote.</p>
+            <p>Our experienced service technicians have passed a rigorous certification program with industry-wide
+                recognition.</p>
+            <p><b>We offer a wide variety of services, including:</b></p>
+            <ul>
+                <li>Parts installation</li>
+                <li>Bicycle tune-ups</li>
+                <li>Flat tire repair</li>
+                <li>Derailleur adjustment</li>
+                <li>Brake caliper adjustment</li>
+            </ul>
+            <p>We specialize in custom bike builds to meet your specific needs. Tell us which types of conditions you
+                plan to do most of your riding in, and our service technicians can recommend the types of frames, tires, and
+                groupsets that are most suitable for those environments.</p>
+        </div>
+        <div class="cert">
+            <img src="{% static 'images/specialist.png' %}" height="150px">
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024, Amazon Web Services, Inc. or its Affiliates. All rights reserved.</p>
+    </div>
+    <script>
+        var light_button = document.querySelector('#light_button');
+        var dark_button = document.querySelector('#dark_button');  
+        
+        function updateBanner(backgroundColor, textColor, logoUrl) 
+        {
+            var banner_div = document.querySelector(".banner");
+            banner_div.style.backgroundColor = backgroundColor;
+            banner_div.style.color = textColor;
+        
+            var logo = document.querySelector(".banner img");
+            logo.setAttribute("src", logoUrl);
+        }
+        
+        light_button.addEventListener('click', function () 
+        {
+            updateBanner("#FFFFFF", "#000000", "{% static 'images/logo-white.png' %}");
+        });
+        
+        dark_button.addEventListener('click', function () 
+        {
+            updateBanner("#000000", "#FFFFFF", "{% static 'images/logo-black.png' %}");
+        });
+        
+        document.addEventListener('DOMContentLoaded', function () 
+        {
+            var form = document.querySelector('.products form');
+            form.addEventListener('submit', function (event) 
+            {
+                var inputElements = form.querySelectorAll('input[type="number"]');
+                var atLeastOneSelected = false;
+            
+                // Loop through each input element
+                inputElements.forEach(function(input) 
+                {
+                    var quantity = parseInt(input.value, 10);
+                    if (quantity > 0) 
+                    {
+                        atLeastOneSelected = true;
+                    }
+                });
+            
+                // If no quantities selected
+                if (!atLeastOneSelected) 
+                {
+                    event.preventDefault();
+                    alert('Please choose a quantity greater than 0');
+                }
+            });
+        });
+
+
+    </script>
+</body>
+
 </html>

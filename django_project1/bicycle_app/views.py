@@ -1,7 +1,8 @@
 from django.shortcuts import render                            
 from django.http import HttpResponse                           
 from .models import Product, Order, Order_Item
-from django.template import loader                     
+from django.template import loader    
+from django.core.exceptions import ValidationError                 
 
 import json
 import pprint                                     
@@ -17,7 +18,7 @@ def index(request):
     pprint.pprint(json_to_runserver)
     # return HttpResponse('/ page loaded. Check the runserver console for test result.')
     context = {'product_items': product_items}    
-    return render(request, "test_form.html", context)
+    return render(request, "products.html", context)
 
 
 def all_orders(request):
@@ -28,26 +29,27 @@ def all_orders(request):
     jsondata = serializers.serialize('json', orders)  
     json_to_runserver = json.loads(jsondata)
     pprint.pprint(json_to_runserver)
-    return HttpResponse('/order_history page loaded. Check the runserver console for test result.') 
+    # return HttpResponse('/order_history page loaded. Check the runserver console for test result.') 
 
     #The 2 lines below are uncommented in the next lab
-    #context = {'orders': orders}
-    #return render(request, "order_history.html", context)
+    context = {'orders': orders}
+    return render(request, "order_history.html", context)
 
 def lookup_order(request, order_id):
-    print('\n***LOG: in "lookup_order" function')
-    order = Order.objects.filter(id=order_id)
+    print('LOG: in "lookup_order" function')
+    order_id=int(order_id)
+    order = list(Order.objects.filter(id=order_id).values())
+    order_data = {
+        "id": order[0]['id'],
+        "order_date_time": order[0]['order_date_time'],
+        "amount": order[0]['amount']
+    }
+    print('LOG: this is the order' + str(order_data))
 
-    #The 4 lines below used during VIEW TESTING 
-    jsondata = serializers.serialize('json', order)  
-    json_to_runserver = json.loads(jsondata)
-    pprint.pprint(json_to_runserver)
-    return HttpResponse('/lookup_order page loaded. Check the runserver console for test result.')
-    
-    #The 3 lines below are uncommented in the next lab
-    #items = Order_Item.objects.filter(order_number=order_id).values() 
-    #context = {'order_details': items, 'order': order}
-    #return render(request, "order_result.html", context)
+    items = Order_Item.objects.filter(order_number=order_id).values() 
+    context = {'order_details': items, 'order': order_data}
+    return render(request, "order_result.html", context)
+
 
 
 def process_order(request):
@@ -121,12 +123,12 @@ def process_order(request):
                 "amount": total_order_amount,
             }
             context = {"order_details": items, "order": order_data}
-            #return render(request, "order_result.html", context)
+            return render(request, "order_result.html", context)
         except ValidationError as e:
             # should never get here
             print("ERROR: object not valid", e)    
         #return a response
-        return HttpResponse('/order_result page loaded. Check the runserver console for test result.')
+        # return HttpResponse('/order_result page loaded. Check the runserver console for test result.')
 
     else:
         #should never get here
